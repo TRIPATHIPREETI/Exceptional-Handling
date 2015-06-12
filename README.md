@@ -16,49 +16,51 @@ public class SimpleInterest {
 	int principle;
 	int rate;
 	int time;
-	static int x = 0;
+	
 
-	public static void simpleInterest(int principle, int rate, int time) {
+	public void simpleInterest(int principle, int rate, int time) {
 
 		if (principle == 0 || rate == 0 || time == 0) {
 			throw new ArithmeticException();
 
 		}
-		int m = (principle * rate * time);
+		double m = (principle * rate * time);
 		if (m <= 100) {
 			throw new ArrayIndexOutOfBoundsException();
 
 		}
-		int SI = (principle * rate * time) / 100;
+		double SI = (principle * rate * time) / 100;
 
 		System.out.println("simple interest is:" + SI);
 	}
 
 	public static void main(String args[]) {
-		while (true) {
+		
+     boolean u;
+		
+		while(u=true){
 			System.out.println("please enter principle,rate and time");
 			Scanner sc = new Scanner(System.in);
 			int p = sc.nextInt();
 			int r = sc.nextInt();
 			int t = sc.nextInt();
-
-			// SimpleInterest si=new SimpleInterest();
-			// si.simpleInterest(p,r,t);
-
-			while (true) {
+			
+			
 				try {
-					simpleInterest(p, r, t);
+					SimpleInterest si=new SimpleInterest();
+					 si.simpleInterest(p,r,t);
+					u= false;
 				} catch (ArithmeticException e) {
 
-					System.out
-							.println("principle or rate or time cannot be zero");
-				} catch (ArrayIndexOutOfBoundsException e) {
+					System.out.println("principle or rate or time cannot be zero");
+				} 
+				catch (ArrayIndexOutOfBoundsException e) {
 
-					System.out.println("should be greater than 100");
+					System.out.println("should be greater than 100"+ e);
 				}
-				return;
+				
 			}
 		}
-	}
-
+	
 }
+
